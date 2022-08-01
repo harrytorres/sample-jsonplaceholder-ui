@@ -58,8 +58,24 @@ export default function Header(){
                       {item.name}
                     </a>
                   ))}
-                </div>
+                </div>                       
+
               </div>
+
+              <div className="ml-10 space-x-4 mt-4">
+                  <a
+                    href="/login"
+                    className="inline-block bg-indigo-500 py-1 px-2 border border-transparent rounded-md text-base font-medium text-white hover:bg-opacity-75"
+                  >
+                    Sign in
+                  </a>
+                  <a
+                    href="#"
+                    className="inline-block bg-white py-1 px-2 border border-transparent rounded-md text-base font-medium text-indigo-600 hover:bg-indigo-50"
+                  >
+                    Sign up
+                  </a>
+              </div>   
               
             </div>
           </div>

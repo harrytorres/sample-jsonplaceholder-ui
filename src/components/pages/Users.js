@@ -1,7 +1,7 @@
 
-import { MailIcon, PhoneIcon } from '@heroicons/react/solid'
 import React from 'react'
 import axios from 'axios'
+import AddUserModal from '../partials/AddUserModal'
 
 
 class User extends React.Component{
@@ -29,121 +29,63 @@ class User extends React.Component{
   
   render(){
     return (
-        <ul role="list" className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 mt-5">
-          {this.state.users.map((person) => (
-           <li key={person.name} className="col-span-1 bg-white rounded-lg shadow divide-y divide-gray-200">
-              <div className="w-full flex items-center justify-between p-6 space-x-6">
-                <div className="flex-1 truncate">
-
-                  
-                    <h3 className="text-gray-900 text-sm font-medium truncate">{person.name}</h3>
-                  
-
-                    <p className="mt-1 text-gray-500 text-sm truncate">
-                    Username: 
-                        <span className="flex-shrink-0 inline-block px-2 py-0.5 text-green-800 text-xs font-medium bg-green-100 rounded-full">{person.username}</span>
-                    </p>
-
-                  <h3 className="text-gray-500 text-sm font-bold truncate mt-2">Personal Address: </h3>
-
-                  <p className="mt-1 text-gray-500 text-sm truncate">
-                    City: 
-                  <span className="flex-shrink-0 inline-block px-2 py-0.5 text-green-800 text-xs font-medium bg-green-100 rounded-full">
-                    {person['address']['city']}
-                   </span>
-                   
-                   </p>
-                  <p className="mt-1 text-gray-500 text-sm truncate">
-                    Geo: 
-                  <span className="flex-shrink-0 inline-block px-2 py-0.5 text-green-800 text-xs font-medium bg-green-100 rounded-full">
-                    {person['address']['geo']['lat'] } , {person['address']['geo']['lat']}
-                  </span>
-                    
-                  </p>
-                  <p className="mt-1 text-gray-500 text-sm truncate">
-                    Street: 
-                    <span className="flex-shrink-0 inline-block px-2 py-0.5 text-green-800 text-xs font-medium bg-green-100 rounded-full">
-                      {person['address']['street']}
-                    </span>
-                  </p>
-                  <p className="mt-1 text-gray-500 text-sm truncate">
-                    Suite: 
-                    <span className="flex-shrink-0 inline-block px-2 py-0.5 text-green-800 text-xs font-medium bg-green-100 rounded-full">
-                      {person['address']['suite']}
-                    </span>
-                  </p>
-                  <p className="mt-1 text-gray-500 text-sm truncate">
-                    Zip code: 
-                    <span className="flex-shrink-0 inline-block px-2 py-0.5 text-green-800 text-xs font-medium bg-green-100 rounded-full">
-                      {person['address']['zipcode']}
-                    </span>
-                  </p>
-
-                  <h3 className="text-gray-500 text-sm font-bold truncate mt-2">Other Info: </h3>
-
-                  <p className="mt-1 text-gray-500 text-sm truncate">
-                    Phone: 
-                    <span className="flex-shrink-0 inline-block px-2 py-0.5 text-green-800 text-xs font-medium bg-green-100 rounded-full">
-                      {person.phone}
-                    </span>
-                  </p>
-
-                  <p className="mt-1 text-gray-500 text-sm truncate">
-                    Website: 
-                    <span className="flex-shrink-0 inline-block px-2 py-0.5 text-green-800 text-xs font-medium bg-green-100 rounded-full">
-                      {person.website}
-                    </span>
-                  </p>
-
-                  <h3 className="text-gray-500 text-sm font-bold truncate mt-2">Company Info: </h3>
-
-                  <p className="mt-1 text-gray-500 text-sm truncate">
-                    Company name: 
-                    <span className="flex-shrink-0 inline-block px-2 py-0.5 text-green-800 text-xs font-medium bg-green-100 rounded-full">
-                      {person['company']['name']}
-                    </span>
-                  </p>
-
-                  <p className="mt-1 text-gray-500 text-sm truncate">
-                    Phrase: 
-                    <span className="flex-shrink-0 inline-block px-2 py-0.5 text-green-800 text-xs font-medium bg-green-100 rounded-full">
-                      {person['company']['catchPhrase']}
-                    </span>
-                  </p>
-
-                  <p className="mt-1 text-gray-500 text-sm truncate">
-                    BS: 
-                    <span className="flex-shrink-0 inline-block px-2 py-0.5 text-green-800 text-xs font-medium bg-green-100 rounded-full">
-                      {person['company']['bs']}
-                    </span>
-                  </p>
-                 
-                </div>
+      <div className="px-4 sm:px-6 lg:px-8 mt-5">
+        <div className="sm:flex sm:items-center">
+          <div className="sm:flex-auto">
+            <h1 className="text-xl font-semibold text-gray-900">Users</h1>
+            <p className="mt-2 text-sm text-gray-700">
+              A list of all the users in your account including their name, title, email and role.
+            </p>
+          </div>
+          <div className="mt-4 sm:mt-0 sm:ml-16 sm:flex-none">
+           <AddUserModal/>
+          </div>
+        </div>
+        <div className="mt-8 flex flex-col">
+          <div className="-my-2 -mx-4 overflow-x-auto sm:-mx-6 lg:-mx-8">
+            <div className="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">
+              <div className="overflow-hidden shadow ring-1 ring-black ring-opacity-5 md:rounded-lg">
+                <table className="min-w-full divide-y divide-gray-300">
+                  <thead className="bg-gray-50">
+                    <tr>
+                      <th scope="col" className="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6">
+                        Name
+                      </th>
+                      <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
+                        Username
+                      </th>
+                      <th scope="col" className="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">
+                        Email
+                      </th>
+                      
+                      <th scope="col" className="relative py-3.5 pl-3 pr-4 sm:pr-6">
+                        <span className="sr-only">Edit</span>
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody className="bg-white">
+                    {this.state.users.map((person, personIdx) => (
+                      <tr key={person.email} className={personIdx % 2 === 0 ? undefined : 'bg-gray-50'}>
+                        <td className="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">
+                          {person.name}
+                        </td>
+                        <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{person.username}</td>
+                        <td className="whitespace-nowrap px-3 py-4 text-sm text-gray-500">{person.email}</td>
+                        <td className="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
+                          <a href="#" className="text-indigo-600 hover:text-indigo-900">
+                            Edit<span className="sr-only">, {person.name}</span>
+                          </a>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
               </div>
-              <div>
-                <div className="-mt-px flex divide-x divide-gray-200">
-                  <div className="w-0 flex-1 flex">
-                    <div
-                      className="relative -mr-px w-0 flex-1 inline-flex items-center justify-center py-4 text-sm text-gray-700 font-medium border border-transparent rounded-bl-lg hover:text-gray-500"
-                    >
-                      <MailIcon className="w-5 h-5 text-gray-400" aria-hidden="true" />
-                      <span className="ml-3">Email</span>
-                    </div>
-                  </div>
-                  <div className="-ml-px w-0 flex-1 flex">
-                    <div
-                      className="relative w-0 flex-1 inline-flex items-center justify-center py-4 text-sm text-gray-700 font-medium border border-transparent rounded-br-lg hover:text-gray-500"
-                    >
-                      <PhoneIcon className="w-5 h-5 text-gray-400" aria-hidden="true" />
-                      <span className="ml-3">Call</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </li>
-          ))}
-      </ul>
-  )
+            </div>
+          </div>
+        </div>
+      </div>
+    )
   }
     
 }
