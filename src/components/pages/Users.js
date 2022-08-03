@@ -9,7 +9,8 @@ class User extends React.Component{
   constructor(props){
     super(props)
     this.state = {
-      users: []
+      users: [],
+      newUser: []
     }
   }
 
@@ -23,6 +24,10 @@ class User extends React.Component{
       this.setState({ users: response.data })
     })
   }
+
+  componentDidUpdate() {
+    console.log(this.state.newUser);
+}
 
 
   
